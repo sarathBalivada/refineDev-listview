@@ -20,3 +20,6 @@ adhere to best practices, allowing you to focus on more complex tasks instead.
 to the resources prop of the <Refine/> component in App.tsx.
 
 => resource is a collection of data on your API used in the app.
+
+
+---------------------------------------------

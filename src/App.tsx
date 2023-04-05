@@ -18,6 +18,13 @@ const App: React.FC = () => {
                 dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
                 notificationProvider={notificationProvider}
                 resources={[
+                  {
+                    name: "users",
+                    list: "/users",
+                    show: "/users/show/:id",
+                    create: "/users/create",
+                    edit: "/users/edit/:id",
+                  },
                     {
                         name: "blog_posts",
                         list: "/blog-posts",
@@ -25,11 +32,16 @@ const App: React.FC = () => {
                         create: "/blog-posts/create",
                         edit: "/blog-posts/edit/:id",
                     },
+                    {
+                      name: "samples",
+                      list: "/samples",
+                      show: "/samples/show/:id",
+                      create: "/samples/create",
+                      edit: "/samples/edit/:id",
+                    },
+                   
                 ]}
-                options={{
-                    syncWithLocation: true,
-                    warnWhenUnsavedChanges: true,
-                }}
+               
             >
                 <Routes>
                     <Route
@@ -42,9 +54,12 @@ const App: React.FC = () => {
                         <Route
                             index
                             element={
-                                <NavigateToResource resource="blog_posts" />
+                                <NavigateToResource resource="users" />
                             }
                         />
+                      
+
+                        {/* Blog page */}
                         <Route path="blog-posts">
                             <Route index element={<AntdInferencer />} />
                             <Route
@@ -57,6 +72,36 @@ const App: React.FC = () => {
                             />
                             <Route path="create" element={<AntdInferencer />} />
                         </Route>
+                        
+                        {/* Samples page */}
+                        <Route path="samples">
+                              <Route index element={ <AntdInferencer /> } />
+                              <Route
+                                path="show/:id"
+                                element={<AntdInferencer />}
+                            />
+                            <Route
+                                path="edit/:id"
+                                element={<AntdInferencer />}
+                            />
+                            <Route path="create" element={<AntdInferencer />} />
+                        </Route>
+                        
+                            {/* users page */}
+                            <Route path="users">
+                              <Route index element={ <AntdInferencer /> } />
+                              <Route
+                                path="show/:id"
+                                element={<AntdInferencer />}
+                            />
+                            <Route
+                                path="edit/:id"
+                                element={<AntdInferencer />}
+                            />
+                            <Route path="create" element={<AntdInferencer />} />
+                        </Route>
+                        
+           
                         <Route path="*" element={<ErrorComponent />} />
                     </Route>
                 </Routes>
